@@ -10,5 +10,7 @@
     <string name="payment">Payment</string>
     <string name="add_wallet">You can add the following categories to your Wallet</string>
     <string name="categories">Categories</string>
+    <string name="loyalty">Loyalty</string>
+    <string name="voucher">Voucher</string>
 
 </resources>

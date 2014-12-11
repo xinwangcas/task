@@ -280,8 +280,8 @@ int id action_context_bar 0x7f05001d
 int id action_menu_divider 0x7f050016
 int id action_menu_presenter 0x7f050017
 int id action_mode_close_button 0x7f050024
-int id action_search 0x7f05003d
-int id action_settings 0x7f05003e
+int id action_search 0x7f050043
+int id action_settings 0x7f050044
 int id activity_chooser_view_content 0x7f050025
 int id always 0x7f05000b
 int id beginning 0x7f050011
@@ -309,6 +309,12 @@ int id normal 0x7f050000
 int id progress_circular 0x7f050018
 int id progress_horizontal 0x7f050019
 int id radio 0x7f05002f
+int id row2col1 0x7f05003d
+int id row2col2 0x7f05003e
+int id row2col3 0x7f05003f
+int id row3col1 0x7f050040
+int id row3col2 0x7f050041
+int id row3col3 0x7f050042
 int id search_badge 0x7f050032
 int id search_bar 0x7f050031
 int id search_button 0x7f050033
@@ -380,8 +386,10 @@ int string add_wallet 0x7f0a0014
 int string app_name 0x7f0a000d
 int string categories 0x7f0a0015
 int string hello_world 0x7f0a000e
+int string loyalty 0x7f0a0016
 int string payment 0x7f0a0013
 int string transport 0x7f0a0011
+int string voucher 0x7f0a0017
 int string vouchers 0x7f0a0012
 int style AppBaseTheme 0x7f0b0083
 int style AppTheme 0x7f0b0084
