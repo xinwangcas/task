@@ -28,7 +28,7 @@ public class MainActivity extends FragmentActivity {
 		Fragment fragment1 = new PaymentFragment();
 		Fragment fragment2 = new PaymentFragment();
 		Fragment fragment3 = new PaymentFragment();
-		Fragment[] fragmentArray = new Fragment[] { fragment1, fragment2,
+		Fragment[] fragmentArray = new Fragment[] { fragment0, fragment1, fragment2,
 				fragment3 };
 		LFFragmentPagerAdapter adapter = new LFFragmentPagerAdapter(
 				getSupportFragmentManager(), fragmentArray);
@@ -59,6 +59,8 @@ public class MainActivity extends FragmentActivity {
 
 		actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		Tab tab0 = actionBar.newTab().setText(R.string.categories)
+				.setTabListener(new ActionTabListener(fragment0));
 		
 		Tab tab1 = actionBar.newTab().setText(R.string.payment)
 				//.setIcon(android.R.drawable.ic_menu_agenda)
@@ -72,6 +74,7 @@ public class MainActivity extends FragmentActivity {
 				//.setIcon(android.R.drawable.ic_menu_agenda)
 				.setTabListener(new ActionTabListener(fragment3));
 
+		actionBar.addTab(tab0);
 		actionBar.addTab(tab1);
 		actionBar.addTab(tab2);
 		actionBar.addTab(tab3);
@@ -80,12 +83,7 @@ public class MainActivity extends FragmentActivity {
 
 	class ActionTabListener implements ActionBar.TabListener {
 
-		// 声明Fragment
-
 		private Fragment fragment;
-
-		// 通过构造引用对应的Fragment
-
 		public ActionTabListener(Fragment fragment) {
 			this.fragment = fragment;
 		}
