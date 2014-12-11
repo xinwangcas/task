@@ -1,138 +1,162 @@
 package com.example.vf996;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBar.Tab;
-import android.support.v7.app.ActionBarActivity;
+import android.annotation.SuppressLint;
+import android.app.ActionBar;
+import android.app.ActionBar.Tab;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.support.v7.app.ActionBar.TabListener;
+import android.widget.Toast;
+@SuppressLint("NewApi")
+public class MainActivity extends FragmentActivity {
 
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class MainActivity<T extends Fragment> extends ActionBarActivity implements ActionBar.TabListener{
+	private ViewPager viewPager;
+	private ActionBar actionBar;
 
-	private Fragment mFragment;
-    private Activity mActivity;
-    private String mTag = null;
-    private Class<T> mClass = null;
-    private Bundle mArgs = null;
-    
-    public MainActivity(){}
-    
-    public MainActivity(Activity activity, String tag, Class<T> clz) {
-        mActivity = activity;
-        mTag = tag;
-        mClass = clz;
-    }
-    
-    public MainActivity(Activity activity, String tag, Class<T> clz, Bundle args) {
-        mActivity = activity;
-        mTag = tag;
-        mClass = clz;
-        mArgs = args;
-
-        // Check to see if we already have a fragment for this tab, probably
-        // from a previously saved state.  If so, deactivate it, because our
-        // initial state is that a tab isn't shown.
-        mFragment = mActivity.getFragmentManager().findFragmentByTag(mTag);
-        if (mFragment != null) { // && !mFragment.isDetached()) {
-            FragmentTransaction ft = mActivity.getFragmentManager().beginTransaction();
-            //ft.detach(mFragment);
-            ft.remove(mFragment);
-            ft.commit();
-        }
-    }
-
-    public void onTabSelected(Tab tab, FragmentTransaction ft) {
-        //if (mFragment == null) {
-            mFragment = Fragment.instantiate(mActivity, mClass.getName(), mArgs);
-            ft.add(android.R.id.content, mFragment, mTag);
-        //} else {
-        //    ft.attach(mFragment);
-        //}
-    }
-
-    public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-        if (mFragment != null) {
-            //ft.detach(mFragment); //requires API 13
-            ft.remove(mFragment); //this does not do the same thing as detach
-        }
-    }
-    
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-//		setContentView(R.layout.activity_main);
-		ActionBar actionBar = getSupportActionBar();
-	    actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-	    actionBar.setDisplayShowTitleEnabled(false);
+		setContentView(R.layout.activity_main);
+		viewPager = (ViewPager) findViewById(R.id.viewpager);
+		Fragment fragment0 = new CategoryFragment();
+		Fragment fragment1 = new PaymentFragment();
+		Fragment fragment2 = new PaymentFragment();
+		Fragment fragment3 = new PaymentFragment();
+		Fragment[] fragmentArray = new Fragment[] { fragment1, fragment2,
+				fragment3 };
+		LFFragmentPagerAdapter adapter = new LFFragmentPagerAdapter(
+				getSupportFragmentManager(), fragmentArray);
 
-	    Tab tab1 = actionBar.newTab()
-	                       .setText(R.string.transport)
-	                       .setTabListener(this);
-	                       //.setTabListener(new TabListener<PaymentFragment>(
-	                         //      this, "artist", PaymentFragment.class));
-	    actionBar.addTab(tab1);
+		viewPager.setAdapter(adapter);
+		viewPager.setOffscreenPageLimit(3);
+		viewPager.setOnPageChangeListener(new OnPageChangeListener() {
 
+			@Override
+			public void onPageSelected(int arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("arg0:" + arg0);
+				actionBar.setSelectedNavigationItem(arg0);
+			}
 
-	    Tab tab2 = actionBar.newTab()
-	                   .setText(R.string.vouchers)
-	                   .setTabListener(this);
-	    actionBar.addTab(tab2);
-	    
-	    Tab tab3 = actionBar.newTab()
-                .setText(R.string.payment)
-                .setTabListener(this);
-	    actionBar.addTab(tab3);
-	    
+			@Override
+			public void onPageScrolled(int arg0, float arg1, int arg2) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void onPageScrollStateChanged(int arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
+		actionBar = getActionBar();
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		
+		Tab tab1 = actionBar.newTab().setText(R.string.payment)
+				//.setIcon(android.R.drawable.ic_menu_agenda)
+				.setTabListener(new ActionTabListener(fragment1));
+
+		Tab tab2 = actionBar.newTab().setText(R.string.vouchers)
+				//.setIcon(android.R.drawable.ic_menu_agenda)
+				.setTabListener(new ActionTabListener(fragment2));
+
+		Tab tab3 = actionBar.newTab().setText(R.string.transport)
+				//.setIcon(android.R.drawable.ic_menu_agenda)
+				.setTabListener(new ActionTabListener(fragment3));
+
+		actionBar.addTab(tab1);
+		actionBar.addTab(tab2);
+		actionBar.addTab(tab3);
+
+	}
+
+	class ActionTabListener implements ActionBar.TabListener {
+
+		// 声明Fragment
+
+		private Fragment fragment;
+
+		// 通过构造引用对应的Fragment
+
+		public ActionTabListener(Fragment fragment) {
+			this.fragment = fragment;
+		}
+
+		@Override
+		public void onTabReselected(Tab tab, android.app.FragmentTransaction ft) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void onTabSelected(Tab tab, android.app.FragmentTransaction ft) {
+			// TODO Auto-generated method stub
+			// ft.add(android.R.id.content, fragment, null);
+			mType = tab.getPosition();
+			System.out.println("tab.getPosition():" + tab.getPosition());
+			viewPager.setCurrentItem(tab.getPosition());
+			invalidateOptionsMenu();
+		}
+
+		@Override
+		public void onTabUnselected(Tab tab, android.app.FragmentTransaction ft) {
+			// TODO Auto-generated method stub
+
+		}
+
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.main, menu);
-	    return super.onCreateOptionsMenu(menu);
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	private int mType;
+
+	@Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		menu.clear();
+		MenuInflater inflater = this.getMenuInflater();
+		switch (mType) {
+		case 0:
+			inflater.inflate(R.menu.main, menu);
+			break;
+
+		case 1:
+			inflater.inflate(R.menu.main, menu);
+			break;
+
+		case 2:
+			inflater.inflate(R.menu.main, menu);
+			break;
+		}
+		return super.onPrepareOptionsMenu(menu);
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
+		// TODO Auto-generated method stub
+		switch (item.getItemId()) {
+		case R.id.action_search:
+			Toast.makeText(this, "first button", Toast.LENGTH_SHORT).show();
+			break;
+		case R.id.action_settings:
+			Toast.makeText(this, "second button", Toast.LENGTH_SHORT).show();
+			break;
+
 		}
+
 		return super.onOptionsItemSelected(item);
-	}
-
-
-	@Override
-	public void onTabReselected(Tab arg0,
-			android.support.v4.app.FragmentTransaction arg1) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void onTabSelected(Tab arg0,
-			android.support.v4.app.FragmentTransaction arg1) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void onTabUnselected(Tab arg0,
-			android.support.v4.app.FragmentTransaction arg1) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }
