@@ -8,5 +8,6 @@
     <string name="transport">Transport</string>
     <string name="vouchers">Vouchers</string>
     <string name="payment">Payment</string>
+    <string name="add_wallet">You can add the following categories to your Wallet</string>
 
 </resources>
