@@ -1,26 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/table"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:stretchColumns="*" >
+
+           <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:background="#92C94A" >
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="10dp" />
+
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="10dp"
+                    android:text="@string/transport"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="10dp"
+                    android:text="@string/loyalty"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="10dp"
+                    android:text="@string/voucher"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+            </TableRow>
+<!--  
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_0"
-    android:orientation="vertical" 
-    
+    android:orientation="horizontal" 
     >
 
     <View style="@style/Divider"/>
     
     <TableRow
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_span="3">
         <TextView 
             android:background="#E3E4E1"
-            android:layout_weight="2"
             android:alpha="0.7"
-            android:layout_marginTop="50dp"
             android:text="@string/add_wallet"
             android:textSize="20sp"
             android:textColor="@color/black"
@@ -29,49 +80,52 @@
     </TableRow>
     
     <TableRow
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
+        android:background="#E3E4E1"
+        android:alpha="0.7"
         >
         <TextView
             android:id="@+id/row2col1"
-            android:layout_column="1"
           	android:layout_width="wrap_content"
           	android:layout_height="wrap_content"
-            android:padding="3dip" />
+          	android:textColor="@color/black"
+            />
         <TextView
             android:id="@+id/row2col2"
             android:text="@string/loyalty"
+            android:textColor="@color/black"
             android:gravity="left"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:padding="3dip" />
         <Button 
             android:id="@+id/row2col3"
             android:src="@drawable/plus_white"
             android:gravity="right"
+            android:textColor="@color/black"
             />
     </TableRow>
 
     <TableRow
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        >
+        android:background="#E3E4E1"
+        android:alpha="0.7">
         <TextView
             android:id="@+id/row3col1"
             android:layout_column="1"
-          	android:layout_width="wrap_content"
+          	android:layout_width="match_parent"
           	android:layout_height="wrap_content"
             android:padding="3dip" />
         <TextView
             android:id="@+id/row3col2"
             android:text="@string/transport"
             android:gravity="left"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:padding="3dip" />
         <Button 
             android:id="@+id/row3col3"
@@ -79,5 +133,8 @@
             android:gravity="right"
             />
     </TableRow>
+
+-->
+
 
 </TableLayout>
