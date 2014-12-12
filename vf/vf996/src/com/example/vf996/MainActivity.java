@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
+import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -32,7 +33,7 @@ public class MainActivity extends FragmentActivity {
 				fragment3 };
 		LFFragmentPagerAdapter adapter = new LFFragmentPagerAdapter(
 				getSupportFragmentManager(), fragmentArray);
-
+        
 		viewPager.setAdapter(adapter);
 		viewPager.setOffscreenPageLimit(3);
 		viewPager.setOnPageChangeListener(new OnPageChangeListener() {
