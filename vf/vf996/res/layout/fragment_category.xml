@@ -7,14 +7,14 @@
             android:orientation="horizontal"
             android:background="@drawable/background_0"
             android:stretchColumns="*" >
-
+        
    <TableRow
                 android:id="@+id/tableRow1"
+                android:layout_marginTop="50dp"
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
                 android:background="#E3E4E1"
                 android:alpha="0.7">
-
 
                 <TextView
                     android:id="@+id/textView11"
@@ -158,91 +158,5 @@
                     />
 
             </TableRow>
-            
-<!--  
-
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background_0"
-    android:orientation="horizontal" 
-    >
-
-    <View style="@style/Divider"/>
-    
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_span="3">
-        <TextView 
-            android:background="#E3E4E1"
-            android:alpha="0.7"
-            android:text="@string/add_wallet"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:gravity="center_vertical"
-            />
-    </TableRow>
-    
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:background="#E3E4E1"
-        android:alpha="0.7"
-        >
-        <TextView
-            android:id="@+id/row2col1"
-          	android:layout_width="wrap_content"
-          	android:layout_height="wrap_content"
-          	android:textColor="@color/black"
-            />
-        <TextView
-            android:id="@+id/row2col2"
-            android:text="@string/loyalty"
-            android:textColor="@color/black"
-            android:gravity="left"
-            android:textSize="20sp"
-            android:padding="3dip" />
-        <Button 
-            android:id="@+id/row2col3"
-            android:src="@drawable/plus_white"
-            android:gravity="right"
-            android:textColor="@color/black"
-            />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:background="#E3E4E1"
-        android:alpha="0.7">
-        <TextView
-            android:id="@+id/row3col1"
-            android:layout_column="1"
-          	android:layout_width="match_parent"
-          	android:layout_height="wrap_content"
-            android:padding="3dip" />
-        <TextView
-            android:id="@+id/row3col2"
-            android:text="@string/transport"
-            android:gravity="left"
-            android:textSize="20sp"
-            android:padding="3dip" />
-        <Button 
-            android:id="@+id/row3col3"
-            android:src="@drawable/plus_white"
-            android:gravity="right"
-            />
-    </TableRow>
-
--->
-
 
 </TableLayout>
